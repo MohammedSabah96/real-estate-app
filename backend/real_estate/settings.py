@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'realtors',
     'listings',
     'drf_multiple_model',
+    'contacts',
 ]
 
 MIDDLEWARE = [
