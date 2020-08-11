@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'realtors',
+    'listings',
+    'drf_multiple_model',
 ]
 
 MIDDLEWARE = [
