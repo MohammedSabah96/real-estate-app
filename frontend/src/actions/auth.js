@@ -41,7 +41,7 @@ export const signup = ({ email, name, password1, password2 }) => async (
       config
     );
     dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
-    dispatch(login(email, password));
+    dispatch(login(email, password1));
   } catch (err) {
     dispatch({ type: SIGNUP_FAILURE });
     dispatch(setAlert("Error Signup", "error"));
