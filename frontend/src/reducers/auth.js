@@ -20,14 +20,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        loading: true,
+        loading: false,
         token: payload.access,
       };
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        isAuthenticated: false,
-        loading: true,
+        isAuthenticated: true,
+        loading: false,
       };
     case SIGNUP_FAILURE:
     case LOGIN_FAILURE:

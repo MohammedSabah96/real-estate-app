@@ -29,7 +29,7 @@
     }
   }
   @if $breakpoint == big-desktop {
-    @media only screen and (min-width: 112.5em) {
+    @media only screen and (min-width: 120.1em) {
       @content; // 1800px
     }
   }

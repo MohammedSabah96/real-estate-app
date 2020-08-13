@@ -40,12 +40,14 @@ class SearchView(APIView):
     serializer_class = ListingSerializer
 
     def post(self, request, format=None):
-        queryset = Listing.objects.order_by('-list_date').filter(is_published=True)
+        queryset = Listing.objects.order_by(
+            '-list_date').filter(is_published=True)
         data = self.request.data
 
         sale_type = data['sale_type']
         queryset = queryset.filter(sale_type__iexact=sale_type)
-        price = int(data['price'].replace('$', '').replace(',', ''))
+        price = int(data['price'].replace(
+            '$', '').replace(',', '').replace('+', ''))
         if price >= 100:
             queryset = queryset.filter(price__gte=price)
 
@@ -69,7 +71,7 @@ class SearchView(APIView):
                     queryset = queryset.exclude(slug__iexact=slug)
 
         open_house = data['open_house']
-        queryset = queryset.filter(open_house__iexact=open_house)
+        queryset = queryset.filter(open_house=open_house)
         keywords = data['keywords']
         queryset = queryset.filter(description__icontains=keywords)
 

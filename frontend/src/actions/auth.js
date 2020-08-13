@@ -16,7 +16,11 @@ export const login = (email, password) => async (dispatch) => {
   };
   const body = JSON.stringify({ email, password });
   try {
-    const res = await axios.post("localhost:8000/api/token", body, config);
+    const res = await axios.post(
+      "http://localhost:8000/api/token/",
+      body,
+      config
+    );
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     dispatch(setAlert("Authenticated Successfully", "success"));
   } catch (err) {
@@ -36,7 +40,7 @@ export const signup = ({ email, name, password1, password2 }) => async (
   const body = JSON.stringify({ email, name, password1, password2 });
   try {
     const res = await axios.post(
-      "localhost:8000/api/accounts/signup",
+      "http://localhost:8000/api/accounts/signup/",
       body,
       config
     );
@@ -44,7 +48,7 @@ export const signup = ({ email, name, password1, password2 }) => async (
     dispatch(login(email, password1));
   } catch (err) {
     dispatch({ type: SIGNUP_FAILURE });
-    dispatch(setAlert("Error Signup", "error"));
+    dispatch(setAlert(err.response.data.error, "error"));
   }
 };
 
