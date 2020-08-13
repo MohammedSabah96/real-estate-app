@@ -9,8 +9,11 @@ import ListingDetail from "./containers/ListingDetail";
 import SignUp from "./containers/SignUp";
 import SignIn from "./containers/SignIn";
 import NotFound from "./components/NotFound";
+import PrivateRoute from "./components/privateRoute";
+
 import { Provider } from "react-redux";
 import store from "./store";
+
 import "./sass/main.scss";
 
 const App = () => (
@@ -21,8 +24,8 @@ const App = () => (
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <PrivateRoute path="/listings/:id" component={ListingDetail} />
           <Route path="/listings" component={Listings} />
-          <Route path="/listings/:id" component={ListingDetail} />
           <Route path="/login" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route component={NotFound} />

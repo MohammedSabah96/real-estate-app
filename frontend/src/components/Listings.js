@@ -26,7 +26,7 @@ const Listings = ({ listings }) => {
     });
     for (let i = 0; i < listings.length; i += 3) {
       result.push(
-        <div className="row">
+        <div key={i} className="row">
           <div className="col-1-of-3">{listingsOnPage[i]}</div>
           <div className="col-1-of-3">
             {listingsOnPage[i + 1] ? listingsOnPage[i + 1] : null}
